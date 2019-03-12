@@ -26,20 +26,12 @@ class DeckListView extends Component {
             decksResult = Object.keys(this.props.deckers).map((deckTitle) => {
                 return (
                     <TouchableOpacity
-<<<<<<< c2297584819a1c8f332fe905c395d4ceff755907
                         key={deckTitle}
                         onPress={() => this.props.navigation.navigate(
                             'DeckView',
                             { title: deckTitle }
                         )}>
                         <DeckSummary  title={deckTitle}/>
-=======
-                        onPress={() => this.props.navigation.navigate(
-                            'DeckView',
-                            { entryId: deckTitle }
-                        )}>
-                        <DeckSummary key={deckTitle} title={deckTitle}/>
->>>>>>> add basic navigations between screens
                     </TouchableOpacity>
                 )
             });
