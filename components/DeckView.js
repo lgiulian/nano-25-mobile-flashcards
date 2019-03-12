@@ -6,6 +6,13 @@ import {fetchDecks} from "../utils/api";
 import {retreiveDecks} from "../actions";
 
 class DeckView extends Component {
+    static navigationOptions = ({ navigation }) => {
+        const { entryId } = navigation.state.params
+    
+        return {
+          title: entryId
+        }
+    }
 
     static navigationOptions = ({ navigation }) => {
         const { title } = navigation.state.params
