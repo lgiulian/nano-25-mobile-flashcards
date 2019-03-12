@@ -3,7 +3,7 @@ import {View, Text, TextInput, TouchableOpacity, StyleSheet} from 'react-native'
 import { connect } from 'react-redux';
 import {fetchDecks, saveDeck} from "../utils/api";
 import {retreiveDecks, saveNewDeck} from "../actions";
-import {purple, white} from "../utils/colors";
+import {purple, white, gray} from "../utils/colors";
 
 class NewDeck extends Component {
 
@@ -45,19 +45,21 @@ class NewDeck extends Component {
     render(){
         const decksCount = Object.keys(this.props.deckers).length;
         return (
-            <View>
-                <Text>{decksCount}</Text>
-                <Text>What is the title of your new deck ?</Text>
-                <TextInput
-                    style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-                    onChangeText={(text) => this.setState({title: text})}
-                    value={this.state.title}
-                />
-                <TouchableOpacity style={styles.button} onPress={this.onSaveDeck}>
-                    <Text style={styles.buttonText}>
-                        Submit
-                    </Text>
-                </TouchableOpacity>
+            <View style={styles.container}>
+                <View style={styles.formBox}>
+                    <Text>{decksCount}</Text>
+                    <Text style={styles.text}>What is the title of your new deck ?</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={(text) => this.setState({title: text})}
+                        value={this.state.title}
+                    />
+                    <TouchableOpacity style={styles.button} onPress={this.onSaveDeck}>
+                        <Text style={styles.buttonText}>
+                            Submit
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         )
     }
@@ -75,6 +77,31 @@ export default connect(
 )(NewDeck)
 
 const styles = StyleSheet.create({
+    container: {
+		flex: 1,
+		paddingTop: 50,
+		backgroundColor: white,
+		alignItems: 'center',
+	},
+	formBox: {
+		justifyContent: 'center',
+		alignItems: 'stretch'
+	},
+	text: {
+		color: purple,
+		fontSize: 30,
+		textAlign: 'center'
+	},
+	input: {
+		width: 250,
+		height: 40,
+		padding: 10,
+		borderWidth: 1,
+		borderColor: gray,
+		backgroundColor: white,
+		margin: 20,
+        alignSelf: 'center',
+	},
     button: {
         padding: 10,
         backgroundColor: purple,
