@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { purple, white } from '../utils/colors'
 import {fetchDecks} from "../utils/api";
 import {retreiveDecks} from "../actions";
+import { DeckSummary } from './DeckSummary'
 
 class DeckView extends Component {
     static navigationOptions = ({ navigation }) => {
@@ -39,8 +40,7 @@ class DeckView extends Component {
         const nrCards = deckers[title].questions.length;
         return (
             <View>
-                <Text>{title}</Text>
-                <Text>{nrCards}</Text>
+                <DeckSummary title={title}/>
 
                 <TouchableOpacity style={styles.button} onPress={this.addCard}>
                         <Text style={styles.buttonText}>

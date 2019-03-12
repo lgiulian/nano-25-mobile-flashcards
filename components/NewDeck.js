@@ -23,7 +23,14 @@ class NewDeck extends Component {
                         }
                     }
                 ));
-            });
+            })
+            .then(() => {
+                this.props.navigation.navigate(
+                    'DeckView',
+                    { title: this.props.title }
+                )
+            })
+            .catch((error) => console.warn('Error', error));
     };
 
     componentDidMount () {
